@@ -7,7 +7,7 @@ export interface IEmployee extends Model<IEmployee> {
     apellido: string,
     email: string,
     telefono: string,
-    password: string,
+    departamento: string,
     createdAt?: string,
     updatedAt?: string
 }
@@ -16,7 +16,10 @@ export const Employee = sequelize.define('Employee', {
     id: {
         type: DataTypes.BIGINT,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        validate: {
+            
+        }
     },
     nombre: {
         type: DataTypes.STRING,
@@ -28,13 +31,15 @@ export const Employee = sequelize.define('Employee', {
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     telefono: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
-    password: {
+    departamento: {
         type: DataTypes.STRING,
         allowNull: false
     }
